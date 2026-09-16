@@ -1,0 +1,16 @@
+{
+  "appId": "com.spendsense.app",
+  "appName": "SpendSense",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "backgroundColor": "#0f0f0f",
+      "androidSplashResourceName": "splash",
+      "showSpinnerOnSplash": false,
+      "splashFullScreen": true,
+      "splashImmersive": true,
+      "launchAutoHide": true,
+      "launchFadeOutDuration": 300
+    }
+  }
+}

@@ -37,28 +37,42 @@ export default function AddTransaction({ onClose, onAdded }) {
     onClose?.();
   }
 
+  // Shared input / select className
+  const inputCls = "w-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg px-4 py-3 text-sm outline-none border border-gray-300 dark:border-gray-700 focus:border-indigo-500 placeholder-gray-400 dark:placeholder-gray-500 transition-colors";
+
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 w-full max-w-md p-6">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 w-full max-w-md p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-white font-bold text-lg">Add Transaction</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-white">
+          <h2 className="text-gray-900 dark:text-white font-bold text-lg">Add Transaction</h2>
+          <button
+            onClick={onClose}
+            className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
             <X size={20} />
           </button>
         </div>
 
         <div className="space-y-4">
           {/* Type toggle */}
-          <div className="flex rounded-lg overflow-hidden border border-gray-700">
+          <div className="flex rounded-lg overflow-hidden border border-gray-300 dark:border-gray-700">
             <button
               onClick={() => set("isDebit", true)}
-              className={`flex-1 py-2 text-sm font-medium transition-colors ${form.isDebit ? "bg-red-600 text-white" : "text-gray-400 hover:bg-gray-800"}`}
+              className={`flex-1 py-2 text-sm font-medium transition-colors ${
+                form.isDebit
+                  ? "bg-red-600 text-white"
+                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
             >
               Expense
             </button>
             <button
               onClick={() => set("isDebit", false)}
-              className={`flex-1 py-2 text-sm font-medium transition-colors ${!form.isDebit ? "bg-green-600 text-white" : "text-gray-400 hover:bg-gray-800"}`}
+              className={`flex-1 py-2 text-sm font-medium transition-colors ${
+                !form.isDebit
+                  ? "bg-green-600 text-white"
+                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
             >
               Income
             </button>
@@ -70,7 +84,7 @@ export default function AddTransaction({ onClose, onAdded }) {
             placeholder="Amount"
             value={form.amount}
             onChange={e => set("amount", e.target.value)}
-            className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 text-sm outline-none border border-gray-700 focus:border-indigo-500"
+            className={inputCls}
           />
 
           {/* Merchant */}
@@ -79,14 +93,14 @@ export default function AddTransaction({ onClose, onAdded }) {
             placeholder="Merchant / Person"
             value={form.merchant}
             onChange={e => set("merchant", e.target.value)}
-            className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 text-sm outline-none border border-gray-700 focus:border-indigo-500"
+            className={inputCls}
           />
 
           {/* Category */}
           <select
             value={form.category}
             onChange={e => set("category", e.target.value)}
-            className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 text-sm outline-none border border-gray-700 focus:border-indigo-500"
+            className={inputCls}
           >
             <option value="">Select Category</option>
             {CATEGORIES.map(c => (
@@ -98,7 +112,7 @@ export default function AddTransaction({ onClose, onAdded }) {
           <select
             value={form.source}
             onChange={e => set("source", e.target.value)}
-            className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 text-sm outline-none border border-gray-700 focus:border-indigo-500"
+            className={inputCls}
           >
             {SOURCES.map(s => (
               <option key={s} value={s}>{s}</option>
@@ -110,7 +124,7 @@ export default function AddTransaction({ onClose, onAdded }) {
             type="date"
             value={form.date}
             onChange={e => set("date", e.target.value)}
-            className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 text-sm outline-none border border-gray-700 focus:border-indigo-500"
+            className={inputCls}
           />
 
           {/* Note */}
@@ -119,7 +133,7 @@ export default function AddTransaction({ onClose, onAdded }) {
             placeholder="Note (optional)"
             value={form.note}
             onChange={e => set("note", e.target.value)}
-            className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 text-sm outline-none border border-gray-700 focus:border-indigo-500"
+            className={inputCls}
           />
 
           <button

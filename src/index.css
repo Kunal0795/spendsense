@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+/*
+  Enable class-based dark mode for Tailwind v4.
+  Without this, dark: utilities respond to prefers-color-scheme (OS setting)
+  instead of the .dark class toggled on <html> by AppContext.
+*/
+@variant dark (&:is(.dark, .dark *));

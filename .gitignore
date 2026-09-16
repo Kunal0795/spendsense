@@ -27,3 +27,12 @@ dist-ssr
 .env
 .env.*
 !.env.example
+# Android / Capacitor
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/*.iml
+android/.idea/
+android/app/release/
+android/app/debug/
